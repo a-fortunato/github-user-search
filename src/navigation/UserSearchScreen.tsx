@@ -5,7 +5,6 @@ import AppWrapper from '../components/AppWrapper'
 import SearchBar from '../components/SearchBar'
 import UserItem from '../components/UserItem'
 import config from '../config'
-import { RootStackParamList, User } from '../types'
 
 type Props = NativeStackScreenProps<RootStackParamList, 'UserSearch'>
 
@@ -21,7 +20,7 @@ const UserSearchScreen: React.FC<Props> = ({ navigation }) => {
 
   const handleSelectedUser = useCallback((userUrl: string) => {
     fetch(userUrl).then((response) => response.json()).then((userData) => {
-      navigation.navigate('UserDetails', { user: userData })
+      navigation.navigate('UserDetails', { title: userData.login, screen: 'Details', params: { user: userData } })
     })
   }, [navigation])
 

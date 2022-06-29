@@ -1,4 +1,4 @@
-export interface User {
+interface User {
   login: string
   id: number
   node_id: string
@@ -15,9 +15,12 @@ export interface User {
   repos_url: string
   events_url: string
   received_events_url: string
+  type: string
+  created_at: string
+  updated_at: string
 }
 
-export interface UserDetails extends User {
+interface UserDetails extends User {
   name: string | null
   company: string | null
   blog: string
@@ -34,5 +37,27 @@ export interface UserDetails extends User {
 
 type RootStackParamList = {
   UserSearch: undefined
-  UserDetails: { user: UserDetails }
+  UserDetails: {
+    title: string
+    screen: string
+    params: { user: UserDetails }
+  }
 }
+
+type UserTabsParamList = {
+  UserDetails: { user: UserDetails }
+  UserRepos: undefined
+  UserFollowers: undefined
+}
+
+interface Repository {
+  id: number
+  name: string
+  description: string | null
+  language: string
+  disabled: boolean
+  html_url: string
+  visibility: 'public' | 'private'
+}
+
+interface Follower extends User {}

@@ -1,7 +1,10 @@
 import React from 'react'
 import {
-  Image, StyleSheet, Text, TouchableOpacity,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
 } from 'react-native'
+import Avatar from './Avatar'
 
 interface Props {
   username: string
@@ -11,7 +14,7 @@ interface Props {
 
 const UserItem: React.FC<Props> = ({ username, avatarUrl, onPress }) => (
   <TouchableOpacity style={styles.container} onPress={onPress}>
-    <Image style={styles.avatar} source={{ uri: avatarUrl }} />
+    <Avatar isSmall url={avatarUrl} />
     <Text style={styles.text}>{username}</Text>
   </TouchableOpacity>
 )
