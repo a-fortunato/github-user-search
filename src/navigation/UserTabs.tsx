@@ -1,11 +1,11 @@
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
+import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs'
 import React from 'react'
-import UserScreen from './UserScreen'
+import UserScreen from './UserDetailsScreen'
 import UserReposScreen from './UserReposScreen'
 import UserFollowersScreen from './UserFollowersScreen'
 
-const Tab = createBottomTabNavigator()
+const Tab = createMaterialTopTabNavigator()
 
 type Props = NativeStackScreenProps<RootStackParamList, 'UserDetails'>
 
@@ -13,9 +13,7 @@ const UserTabs: React.FC<Props> = () => (
   <Tab.Navigator
     initialRouteName="Details"
     screenOptions={() => ({
-      headerStyle: { backgroundColor: 'papayawhip' },
-      tabBarIcon: () => null,
-      tabBarActiveTintColor: 'purple',
+      tabBarActiveTintColor: 'orange',
       tabBarInactiveTintColor: 'gray',
     })}
   >

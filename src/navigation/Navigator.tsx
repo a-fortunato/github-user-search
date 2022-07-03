@@ -15,9 +15,9 @@ const Navigator = () => (
     <RootStack.Screen
       name="UserDetails"
       component={UserTabs}
-      options={({ route }) => ({
-        title: route.params.title,
-      })}
+      // options={({ route }) => ({
+      //   title: route.params.title,
+      // })}
     />
   </RootStack.Navigator>
 )

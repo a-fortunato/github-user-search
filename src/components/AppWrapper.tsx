@@ -4,10 +4,15 @@ import {
   StatusBar,
   StyleSheet,
   useColorScheme,
+  ViewStyle,
 } from 'react-native'
 import { Colors } from 'react-native/Libraries/NewAppScreen'
 
-const AppWrapper: React.FC<PropsWithChildren<{}>> = ({ children }) => {
+interface Props {
+  style?: ViewStyle
+}
+
+const AppWrapper: React.FC<PropsWithChildren<Props>> = ({ children, style }) => {
   const isDarkMode = useColorScheme() === 'dark'
 
   const backgroundStyle = {
@@ -15,11 +20,15 @@ const AppWrapper: React.FC<PropsWithChildren<{}>> = ({ children }) => {
   }
 
   return (
-    <SafeAreaView style={[backgroundStyle, styles.container]}>
+    <SafeAreaView style={[backgroundStyle, styles.container, style]}>
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
       {children}
     </SafeAreaView>
   )
+}
+
+AppWrapper.defaultProps = {
+  style: {},
 }
 
 const styles = StyleSheet.create({

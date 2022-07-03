@@ -3,30 +3,31 @@ import { StyleSheet, Text, Linking } from 'react-native'
 
 interface Props {
   tag: string
-  text: string | number | boolean | null
+  content: string | number | boolean | null
   isUrl?: boolean
 }
 
-const UserField: React.FC<Props> = ({ tag, text, isUrl }) => {
+const UserField: React.FC<Props> = ({ tag, content, isUrl }) => {
   const onPress = useCallback(async () => {
-    if (isUrl) {
-      const url = (text as string)?.includes('http') ? text : `https://${text}`
+    if (isUrl && content && typeof content === 'string') {
+      const url = content.includes('http') ? content : `https://${content}`
       try {
         const supported = await Linking.canOpenURL(url)
         if (supported) {
           await Linking.openURL(url)
         }
       } catch (e) {
-        console.log('error accessing url', e)
+        // eslint-disable-next-line no-console
+        console.error('error accessing url', e)
       }
     }
-  }, [isUrl, text])
+  }, [isUrl, content])
 
-  let processedText = text
-  if (text === null) {
+  let processedText = content
+  if (content === null) {
     processedText = ''
-  } else if (typeof text === 'boolean') {
-    processedText = !text ? 'No' : 'Yes'
+  } else if (typeof content === 'boolean') {
+    processedText = !content ? 'No' : 'Yes'
   }
 
   return (

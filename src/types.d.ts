@@ -37,15 +37,11 @@ interface UserDetails extends User {
 
 type RootStackParamList = {
   UserSearch: undefined
-  UserDetails: {
-    title: string
-    screen: string
-    params: { user: UserDetails }
-  }
+  UserDetails: undefined
 }
 
 type UserTabsParamList = {
-  UserDetails: { user: UserDetails }
+  UserDetails: undefined
   UserRepos: undefined
   UserFollowers: undefined
 }
@@ -61,3 +57,12 @@ interface Repository {
 }
 
 interface Follower extends User {}
+
+type UserState = {
+  fetchingDetails: boolean
+  details: UserDetails | null
+  fetchingRepos: boolean
+  repos: Repository[]
+  fetchingFollowers: boolean
+  followers: Follower[]
+}
