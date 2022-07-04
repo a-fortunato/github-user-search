@@ -7,7 +7,7 @@ import UserFollowersScreen from './UserFollowersScreen'
 
 const Tab = createMaterialTopTabNavigator()
 
-type Props = NativeStackScreenProps<RootStackParamList, 'UserDetails'>
+type Props = NativeStackScreenProps<RootStackParamList, 'UserData'>
 
 const UserTabs: React.FC<Props> = () => (
   <Tab.Navigator

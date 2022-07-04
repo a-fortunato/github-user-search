@@ -26,7 +26,7 @@ const UserSearchScreen: React.FC<Props> = ({ navigation }) => {
       dispatch(fetchUserById(user.url))
       dispatch(fetchUserRepos(user.repos_url))
       dispatch(fetchUserFollowers(user.followers_url))
-      navigation.navigate('UserDetails')
+      navigation.navigate('UserData', { title: user.login })
     },
     [dispatch, navigation],
   )

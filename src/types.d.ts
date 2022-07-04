@@ -37,7 +37,9 @@ interface UserDetails extends User {
 
 type RootStackParamList = {
   UserSearch: undefined
-  UserDetails: undefined
+  UserData: {
+    title: string
+  }
 }
 
 type UserTabsParamList = {

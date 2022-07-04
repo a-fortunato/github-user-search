@@ -13,11 +13,11 @@ const Navigator = () => (
       options={{ title: 'Github User Search' }}
     />
     <RootStack.Screen
-      name="UserDetails"
+      name="UserData"
       component={UserTabs}
-      // options={({ route }) => ({
-      //   title: route.params.title,
-      // })}
+      options={({ route }) => ({
+        title: route.params.title,
+      })}
     />
   </RootStack.Navigator>
 )
