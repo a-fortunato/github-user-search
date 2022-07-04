@@ -1,4 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
+import config from '../config'
 
 const fetchByUrl = async (url: string) => {
   const response = await fetch(url)
@@ -18,4 +19,14 @@ export const fetchUserFollowers = createAsyncThunk(
 export const fetchUserById = createAsyncThunk(
   'user/fetchUserById',
   async (url: string) => fetchByUrl(url),
+)
+
+export const fetchUsers = createAsyncThunk(
+  'search/fetchUsers',
+  async (text: string) => {
+    const queryString = `q=${encodeURIComponent(`${text} in:login`)}`
+    const url = `${config.host}/search/users?${queryString}`
+    const data = await fetchByUrl(url)
+    return data?.items
+  },
 )

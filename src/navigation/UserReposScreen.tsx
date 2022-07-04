@@ -12,7 +12,7 @@ import { useAppSelector } from '../redux/store'
 type Props = MaterialTopTabScreenProps<UserTabsParamList, 'UserRepos'>
 
 const UserReposScreen: React.FC<Props> = () => {
-  const repos = useAppSelector((state) => state.user.repos) as Repository[]
+  const repos: Repository[] = useAppSelector((state) => state.user.repos)
   const isFetching = useAppSelector((state) => state.user.fetchingRepos)
 
   const handleOnPress = useCallback(async (url: string) => {

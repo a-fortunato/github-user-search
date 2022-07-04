@@ -7,7 +7,7 @@ import { useAppSelector } from '../redux/store'
 type Props = MaterialTopTabScreenProps<UserTabsParamList, 'UserFollowers'>
 
 const UserFollowersScreen: React.FC<Props> = () => {
-  const followers = useAppSelector((state) => state.user.followers) as Follower[]
+  const followers: Follower[] = useAppSelector((state) => state.user.followers)
   const isFetching = useAppSelector((state) => state.user.fetchingFollowers)
 
   return (
